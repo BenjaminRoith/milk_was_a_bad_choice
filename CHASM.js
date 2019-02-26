@@ -1,13 +1,17 @@
 var x = 100.0; 
 var y = 0; 
 var speed = 1; 
+var mySound;
+
 
 function preload(){
     img = loadImage('Images/RedLizard.png');
+    soundFormats('mp3');
+    mySound = loadSound('music/Heroin.mp3');
 }
 
 function setup(){
-    createCanvas(600,400);
+    createCanvas(1000,600);
     background(255,255,255);
     cursor(img);
 }
@@ -37,18 +41,21 @@ function draw(){
         y = height;
     }
     fill('white');
-    ellipse(x,y,50,50);
     ellipse(200, y,50,50);
-    ellipse(300,y,50,50);
     ellipse(400,y,50,50);
-    ellipse(500,y,50,50);
-    ellipse(600,y,0,0);
+    ellipse(600,y,50,50);
+    ellipse(800,y,50,50);
 }
 
 function keyPressed(){
+    if (keyCode == 'p'){
+        mySound.setVolume(0.5);
+        mySound.play();
+    }
     if (keyCode === RIGHT_ARROW) {
         speed += 1;
-      } else if (keyCode === LEFT_ARROW) {
+    }
+    if (keyCode === LEFT_ARROW) {
         speed -= 1;
-      }
+    }
 }
